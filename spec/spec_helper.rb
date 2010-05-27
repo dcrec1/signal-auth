@@ -4,8 +4,6 @@ require 'yaml'
 
 SignalAuth = YAML.load_file("#{current_path}/../signal-auth.yml")
 
-RAILS_ENV = "test"
-
 require current_path  + "/../../../../config/environment"
 
 require 'spec/autorun'

@@ -1,4 +1,4 @@
-class ApplicationController
+ApplicationController.class_eval do
   before_filter :authenticate
 
   protected
