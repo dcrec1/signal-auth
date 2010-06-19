@@ -7,6 +7,7 @@ end
 
 ActionController::Routing::Routes.draw do |map|
   map.connect '/test', :controller => :auth, :action => :index
+  map.connect '/build', :controller => :projects, :action => :build
 end
 
 def authorization_for(user, password)
@@ -43,5 +44,13 @@ describe AuthController do
         response.code.should eql("401")
       end
     end
+  end
+end
+
+describe ProjectsController do
+  it "should not require authentication for build" do
+    Project.stub!(:find).and_return(mock(Project, :send_later => nil))
+    get :build
+    response.should be_success
   end
 end

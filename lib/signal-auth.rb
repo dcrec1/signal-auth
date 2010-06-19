@@ -9,3 +9,7 @@ ApplicationController.class_eval do
     end
   end
 end
+
+ProjectsController.class_eval do
+  skip_before_filter :authenticate, :only => :build
+end
