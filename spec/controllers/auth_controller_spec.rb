@@ -7,7 +7,7 @@ end
 
 ActionController::Routing::Routes.draw do |map|
   map.connect '/test', :controller => :auth, :action => :index
-  map.connect '/build', :controller => :projects, :action => :build
+  map.connect '/build', :controller => :builds, :action => :create
 end
 
 def authorization_for(user, password)
@@ -47,10 +47,18 @@ describe AuthController do
   end
 end
 
-describe ProjectsController do
-  it "should not require authentication for build" do
-    Project.stub!(:find).and_return(mock(Project, :send_later => nil))
-    get :build
+describe BuildsController do
+  before :each do
+    controller.stub!(:create).and_return(true)
+  end
+
+  it "should create a build without authenticating the user" do
+    post :create
     response.should be_success
+  end
+
+  it "should create a build with verifying the authenticity token" do
+    controller.should_not_receive(:verify_authenticity_token)
+    post :create
   end
 end
