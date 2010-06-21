@@ -10,6 +10,10 @@ ApplicationController.class_eval do
   end
 end
 
+ProjectsController.class_eval do
+  skip_before_filter :authenticate, :verify_authenticity_token, :only => :build
+end
+
 BuildsController.class_eval do
   skip_before_filter :authenticate, :verify_authenticity_token
 end
