@@ -73,6 +73,15 @@ describe ProjectsController do
       response.should_not be_success
     end
   end
+
+  context "on status" do
+    context "with xml format" do
+      it "should not require authentication" do
+        get :status, :format => :xml
+        response.should be_success
+      end
+    end
+  end
 end
 
 describe BuildsController do

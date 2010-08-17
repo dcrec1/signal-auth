@@ -11,7 +11,7 @@ ApplicationController.class_eval do
 end
 
 ProjectsController.class_eval do
-  skip_before_filter :authenticate, :verify_authenticity_token, :only => :build
+  skip_before_filter :authenticate, :verify_authenticity_token, :only => [:build, :status]
 end
 
 BuildsController.class_eval do
