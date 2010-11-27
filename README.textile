@@ -1,8 +1,7 @@
 h2. INSTALLATION
 
-<pre><code>
-script/plugin install git://github.com/dcrec1/signal-auth.git
-</code></pre>
+<pre><code>1. Execute: script/plugin install git://github.com/dcrec1/signal-auth.git
+2. Customize config/signal-auth.yml</code></pre>
 
 h2. LICENSE:
 
