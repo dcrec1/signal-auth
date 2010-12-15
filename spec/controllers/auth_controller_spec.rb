@@ -18,7 +18,7 @@ end
 
 describe AuthController do
   it "should require authentication" do
-    get :index 
+    get :index
     response.code.should eql("401")
   end
 
@@ -74,10 +74,10 @@ describe ProjectsController do
     end
   end
 
-  context "on status" do
+  context "on fetch_status" do
     context "with xml format" do
       it "should not require authentication" do
-        get :status, :format => :xml
+        get :fetch_status, :format => :xml
         response.should be_success
       end
     end
